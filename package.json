@@ -1,0 +1,13 @@
+{
+  "name": "quizzery",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Laurenz1606/Quizzery.de.git",
+  "license": "MIT",
+  "scripts": {
+    "deploy:all": "yarn deploy:app && yarn deploy:backend && yarn deploy:landing",
+    "deploy:app": "echo",
+    "deploy:backend": "cd backend && sudo rm -rf /var/www/quizzery/backend/* && yarn build && sudo cp -r dist /var/www/quizzery/backend && sudo cp package.json /var/www/quizzery/backend && cd /var/www/quizzery/backend && sudo yarn install --production && cd ..  && sudo pm2 flush quizzery-backend && sudo pm2 restart ecosystem.config.js --only quizzery-backend",
+    "deploy:landing": "echo"
+  }
+}
